@@ -2,11 +2,11 @@ package zonda.classes;
 
 import java.util.Scanner;
 
-public class Moto {
+public class Moto extends Servicos{
     String modelo;
     String placa;
     String defeito;
-    int status;
+    int status;         //0 - não iniciado / 1 - iniciado / 2 - cancelado / 3 - concluido
     float preco;
     Scanner leitura = new Scanner(System.in);
 
@@ -37,6 +37,11 @@ public class Moto {
         this.status = status;
     }
 
+    public void setPreco() {
+        System.out.println("Qual é o valor do serviço: ");
+        this.preco = leitura.nextFloat();
+    }
+
     public String getModelo() {
         return modelo;
     }
@@ -51,6 +56,10 @@ public class Moto {
 
     public int getStatus() {
         return status;
+    }
+
+    public float getPreco() {
+        return preco;
     }
 
     @Override
