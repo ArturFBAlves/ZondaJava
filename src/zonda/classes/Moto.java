@@ -72,3 +72,4 @@ public class Moto extends Servicos{
                 Preço: %.2f)""".formatted(modelo,placa,defeito,status,preco);
     }
 }
+
