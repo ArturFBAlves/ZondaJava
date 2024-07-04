@@ -2,40 +2,51 @@ package zonda.classes;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
-public class Servicos implements Iterable<Moto>{
-    private final ArrayList<Moto> servicos;
+public class Servicos{
+    String defeito;
+    int status;         //0 - não iniciado / 1 - iniciado / 2 - cancelado / 3 - concluido
+    float preco;
+    Moto moto;
+    Scanner leitura = new Scanner(System.in);
 
-    public Servicos() {
-        this.servicos = new ArrayList<>();
+    public Servicos(Moto moto,String defeito) {
+        this.defeito = defeito;
+        this.moto = moto;
+        this.status = 0;
     }
 
-    public void add(Moto moto) {
-        servicos.add(moto);
+    public void setDefeito(String defeito) {
+        this.defeito = defeito;
     }
 
-    public boolean isEmpty() {
-        return servicos.isEmpty();
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
 
-    public int size() {
-        return servicos.size();
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public Moto get(int index) {
-        return servicos.get(index);
+    public Moto getMoto() {
+        return moto;
+    }
+
+    public float getPreco() {
+        return preco;
     }
 
     @Override
-    public Iterator<Moto> iterator() {
-        return servicos.iterator();
-    }
+    public String toString() {
+        return
+            ("""
+                Defeito: %s
+                Status: %d
+                Preço: %.2f
+                %s
+                """).formatted(defeito,status,preco,moto);
 
-    public double valorGanho() {
-        double total = 0;
-        for(Moto moto: servicos){
-            total += moto.getPreco();
-        }
-        return total;
+
     }
 }
